@@ -14,8 +14,9 @@ const AddCompany = () => {
   const formSubmit = (e) =>{
     e.preventDefault()
       const data = new FormData(e.target)
-      const companyObject =Object.fromEntries(data.entries())
-      addCompany(companyObject)
+     //const companyObject =Object.fromEntries(data.entries())
+      //console.log(companyObject)
+      addCompany(data)
 
 
 
@@ -39,7 +40,7 @@ const AddCompany = () => {
                 <option value={true}>פעיל  </option>
                
             </select>
-            <input type="file"  name="logo"/>
+            <input type="file"  name="image"/>
             <button  type="submit">שלח</button>
         </form>
 

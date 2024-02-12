@@ -41,7 +41,7 @@ const CompaniesList = () => {
                         <td>
                             <div className="companies-list-company">
                                 <img 
-                                src={company.image || "/noavatar.png"}
+                                src={company.image? "http://localhost:1100/uploads/" + company.image : "/noavatar.png"}
                                 alt=""
                                 width={40}
                                 height={40}

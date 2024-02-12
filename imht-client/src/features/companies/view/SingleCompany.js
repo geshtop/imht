@@ -30,7 +30,7 @@ const SingleCompany = () => {
     <div className="single-company-container">
       <div className="single-company-info">
         <div className="single-company-img-container">
-          <img src={company.image || "/noavatar.png"} />
+          <img src={company.image? "http://localhost:1100/uploads/" + company.image : "/noavatar.png"} />
         </div>
         {company.name}
       </div>

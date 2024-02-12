@@ -19,7 +19,8 @@ const getCompany = async (req,res) =>{
 
 }
 const addCompany = async (req,res) =>{
-    const {name, type, active, image} = req.body
+    const image = (req.file?.filename? req.file.filename: "")
+    const {name, type, active} = req.body
     if(!name || !type){
         return res.status(400).json({
             error: true,

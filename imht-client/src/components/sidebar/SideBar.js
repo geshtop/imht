@@ -94,20 +94,21 @@ const SideBar = () => {
 
   const menuItems = roles==="Admin"? adminMenuItems: userMenuItems
 
-  useEffect(()=>{
-    if(isSuccess){
-      navigate("/login")
-    }
-  }, [isSuccess])
+  // useEffect(()=>{
+  //   if(isSuccess){
+  //     navigate("/login")
+  //   }
+  // }, [isSuccess])
   const logoutClick = () =>{
       logout()
+      navigate("/login")
   }
 
   return (
     <div className="side-bar">
       <div className="side-bar-user">
         <img
-          src={company?.image || "/noavatar.png"}
+          src={company.image? "http://localhost:1100/uploads/" + company.image : "/noavatar.png"}
           alt=""
           width="50"
           height="50"

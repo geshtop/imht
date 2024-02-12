@@ -30,3 +30,5 @@
     [X] set the menu for the user role
 [X] Part 10
     [X] add filter to users and companies lists
+[X] Part 11
+    [X] add files to server and read them in the client

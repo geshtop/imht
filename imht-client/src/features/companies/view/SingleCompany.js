@@ -2,11 +2,14 @@ import { useNavigate, useParams } from "react-router-dom";
 import "./single-company.css";
 import {useGetAllCompaniesQuery , useUpdateCompanyMutation} from "../companiesApiSlice"
 import { useEffect } from "react";
+import useGetFilePath from "../../../hooks/useGetFilePath";
 const SingleCompany = () => {
   const {companyId} = useParams()
   const  {data: companiesObject, isError, error, isLoading, isSuccess} = useGetAllCompaniesQuery()
   const [updateCompany, {isSuccess: isUpdateSuccess}] = useUpdateCompanyMutation()
   const navigate = useNavigate()
+  const {getFilePath} = useGetFilePath()
+
   useEffect(()=>{
     if(isUpdateSuccess){
       navigate("/dash/companies")
@@ -15,8 +18,8 @@ const SingleCompany = () => {
   const formSubmit = (e) =>{
       e.preventDefault()
       const data = new FormData(e.target)
-      const companyObject =Object.fromEntries(data.entries())
-      updateCompany(companyObject)
+      //const companyObject =Object.fromEntries(data.entries())
+      updateCompany(data)
 
   } 
 
@@ -30,7 +33,7 @@ const SingleCompany = () => {
     <div className="single-company-container">
       <div className="single-company-info">
         <div className="single-company-img-container">
-          <img src={company.image? "http://localhost:1100/uploads/" + company.image : "/noavatar.png"} />
+          <img src={getFilePath(company.image)} />
         </div>
         {company.name}
       </div>
@@ -71,6 +74,8 @@ const SingleCompany = () => {
               פעיל{" "}
             </option>
           </select>
+          <label>לוגו חברה</label>
+          <input type="file"  name="image"/>
           <button>עדכן</button>
         </form>
       </div>

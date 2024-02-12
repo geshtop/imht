@@ -45,7 +45,8 @@ const addCompany = async (req,res) =>{
 
 }
 const updateCompany = async (req,res) =>{
-    const {_id, name, type, active, image} = req.body
+    const image = (req.file?.filename? req.file.filename: "")
+    const {_id, name, type, active} = req.body
     if(!_id || !name || !type){
         return res.status(400).json({
             error: true,
@@ -64,7 +65,9 @@ const updateCompany = async (req,res) =>{
     company.name = name
     company.type = type
     company.active = active
-    company.image = image
+    if(image){
+        company.image = image
+    }
     const updateCompany = await company.save()
 
     res.json({

@@ -13,10 +13,13 @@ import {useSendLogoutMutation} from "../../features/auth/authApiSlice"
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import useGetFilePath from "../../hooks/useGetFilePath";
 const SideBar = () => {
   const {username, fullname, company, roles} = useAuth()
   const navigate = useNavigate()
   const [logout, {isSuccess}] =useSendLogoutMutation()
+  const {getFilePath} = useGetFilePath()
+
   const adminMenuItems = [
     {
       title: "דפים",
@@ -108,7 +111,7 @@ const SideBar = () => {
     <div className="side-bar">
       <div className="side-bar-user">
         <img
-          src={company.image? "http://localhost:1100/uploads/" + company.image : "/noavatar.png"}
+          src={getFilePath(company.image)}
           alt=""
           width="50"
           height="50"

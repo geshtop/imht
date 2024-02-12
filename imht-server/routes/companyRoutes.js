@@ -23,7 +23,7 @@ router.use(verifyAdmin)
 router.get("/", companyController.getCompanies )
 router.get("/:id", companyController.getCompany )
 router.post("/" , upload.single('image'), companyController.addCompany )
-router.put("/", companyController.updateCompany )
+router.put("/", upload.single('image'),companyController.updateCompany )
 router.delete("/", companyController.deleteCompany )
 
 module.exports = router

@@ -2,6 +2,7 @@ import Search from "../../../components/search/Search"
 import {useGetAllCompaniesQuery, useDeleteCompanyMutation} from "../companiesApiSlice"
 import {Link, useSearchParams} from "react-router-dom"
 import "./companies-list.css"
+import useGetFilePath from "../../../hooks/useGetFilePath"
 const CompaniesList = () => {
    const  {data: companiesObject, isError, error, isLoading, isSuccess} = useGetAllCompaniesQuery()
    const [deleteCompany,{isSuccess: isDeleteSuccess}] = useDeleteCompanyMutation()
@@ -13,6 +14,7 @@ const CompaniesList = () => {
     }
     const [searchParams] = useSearchParams()
     const q = searchParams.get("q")
+    const {getFilePath} = useGetFilePath()
 
    if(isLoading) return <h1> Loading ...</h1>
    if(isError) return <h1>{ JSON.stringify( error)}</h1>
@@ -41,7 +43,7 @@ const CompaniesList = () => {
                         <td>
                             <div className="companies-list-company">
                                 <img 
-                                src={company.image? "http://localhost:1100/uploads/" + company.image : "/noavatar.png"}
+                                src={ getFilePath(company.image)}
                                 alt=""
                                 width={40}
                                 height={40}

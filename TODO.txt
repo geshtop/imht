@@ -24,7 +24,8 @@
     [X] set middleware to routes
     [X] add token to all queries from client
     [X] work with the refresh token
-[ ] Part 9
-    [ ] add user info hook from token by adding the jwt-decode packages
-    [ ] add componenet that require roles
+[X] Part 9
+    [X] add user info hook from token by adding the jwt-decode packages
+    [X] add componenet that require roles
+    [X] set the menu for the user role
 

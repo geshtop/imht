@@ -7,7 +7,7 @@ const useAuth = ()=>{
     let isUser = false
     if(token){
         const userDecoded = jwtDecode(token)
-        console.log("userDecoded" , userDecoded)
+        //console.log("userDecoded" , userDecoded)
         const {_id, username, roles, fullname, company} = userDecoded
         isAdmin = roles ==="Admin"
         isUser = roles ==="User"

@@ -1,6 +1,6 @@
 import Search from "../../../components/search/Search"
 import {useGetAllCompaniesQuery, useDeleteCompanyMutation} from "../companiesApiSlice"
-import {Link} from "react-router-dom"
+import {Link, useSearchParams} from "react-router-dom"
 import "./companies-list.css"
 const CompaniesList = () => {
    const  {data: companiesObject, isError, error, isLoading, isSuccess} = useGetAllCompaniesQuery()
@@ -11,8 +11,11 @@ const CompaniesList = () => {
         }
        
     }
+    const [searchParams] = useSearchParams();
+    //console.log("q", searchParams.get('q'));
    if(isLoading) return <h1> Loading ...</h1>
    if(isError) return <h1>{ JSON.stringify( error)}</h1>
+
   return (
     <div className="companies-list">
         <div className="companies-list-top">

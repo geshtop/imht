@@ -19,9 +19,12 @@
     [X] Add authSlice to save the token
     [X] Add authApiSlice to call the auth login, refresh logout from the server 
     [X] Add logout 
-[ ] Part 8
+[X] Part 8
     [X] add middleware to server for verify user and middleware for admin
     [X] set middleware to routes
     [X] add token to all queries from client
     [X] work with the refresh token
+[ ] Part 9
+    [ ] add user info hook from token by adding the jwt-decode packages
+    [ ] add componenet that require roles
 

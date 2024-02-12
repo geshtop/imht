@@ -12,10 +12,12 @@ import "./sidebar.css"
 import {useSendLogoutMutation} from "../../features/auth/authApiSlice"
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 const SideBar = () => {
+  const {username, fullname, company, roles} = useAuth()
   const navigate = useNavigate()
   const [logout, {isSuccess}] =useSendLogoutMutation()
-  const menuItems = [
+  const adminMenuItems = [
     {
       title: "דפים",
       list: [
@@ -57,13 +59,41 @@ const SideBar = () => {
       ],
     },
   ];
+  const userMenuItems = [
+    {
+      title: "דפים",
+      list: [
+        {
+          title: "ראשי",
+          path: "/dash",
+          icon: <MdDashboard />,
+        },
+        {
+          title: "פעולות",
+          path: "/dash/actions",
+          icon: <MdPendingActions />,
+        },
+      ],
+    },
+    {
+      title: "משתמש",
+      list: [
+        {
+          title: "הגדרות",
+          path: "/dash/settings",
+          icon: <MdOutlineSettings />,
+        },
+        {
+          title: "עזרה",
+          path: "/dash/help",
+          icon: <MdHelpCenter />,
+        },
+      ],
+    },
+  ];
 
-  const user = {
-    username: "username",
-    fullname: "שם מלא",
-    company: "שם החברה",
-    image: "",
-  };
+  const menuItems = roles==="Admin"? adminMenuItems: userMenuItems
+
   useEffect(()=>{
     if(isSuccess){
       navigate("/login")
@@ -77,15 +107,16 @@ const SideBar = () => {
     <div className="side-bar">
       <div className="side-bar-user">
         <img
-          src={user.image || "/noavatar.png"}
+          src={company?.image || "/noavatar.png"}
           alt=""
           width="50"
           height="50"
           className="side-bar-user-image"
         />
         <div className="side-bar-user-details">
-          <span className="side-car-user-username">{user.fullname}</span>
-          <span className="side-car-user-title">{user.company}</span>
+          <span className="side-car-user-username">{fullname}</span>
+          <span className="side-car-user-title">{company?.name}</span>
+          <span className="side-car-user-title">{roles}</span>
         </div>
       </div>
 

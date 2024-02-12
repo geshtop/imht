@@ -11,12 +11,17 @@
     [X] Sync companies page with the api
     [X] Add users api slice
     [X] Sync users page with the api
-[ ] Part 5
-    [ ] Add login auth  refresh and logout server
-[ ] Part 6
-    [ ] Add login  Page UI Only
-[ ] Part 7
-    [ ] Add authSlice to save the token
-    [ ] Add authApiSlice to call the auth login, refresh logout from the server 
-    [ ] Add logout 
+[X] Part 5
+    [X] Add login auth  refresh and logout server
+[X] Part 6
+    [X] Add login  Page UI Only
+[X] Part 7
+    [X] Add authSlice to save the token
+    [X] Add authApiSlice to call the auth login, refresh logout from the server 
+    [X] Add logout 
+[ ] Part 8
+    [X] add middleware to server for verify user and middleware for admin
+    [X] set middleware to routes
+    [X] add token to all queries from client
+    [X] work with the refresh token
 

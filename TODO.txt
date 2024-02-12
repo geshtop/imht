@@ -1,0 +1,22 @@
+[X]Part 1 Create Server
+[X]Part 2 Add Company and User models && CRUD
+[X]Part 3
+    [X]Create Client app  - Clean - Add google fonts - react router dom - react icons
+    [X]Generate redux toolkit query - add packages
+    [X]Generate layout page + menu and side bar
+    [X]Add Company page add company and view company page + css
+    [X]Add Users page add user and view user page + css\
+[X]Part 4
+    [X] Add Companies api slice
+    [X] Sync companies page with the api
+    [X] Add users api slice
+    [X] Sync users page with the api
+[ ] Part 5
+    [ ] Add login auth  refresh and logout server
+[ ] Part 6
+    [ ] Add login  Page UI Only
+[ ] Part 7
+    [ ] Add authSlice to save the token
+    [ ] Add authApiSlice to call the auth login, refresh logout from the server 
+    [ ] Add logout 
+

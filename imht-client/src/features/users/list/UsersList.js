@@ -1,6 +1,6 @@
 import React from 'react'
 import Search from '../../../components/search/Search';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import "./users-list.css"
 import { useGetAllUsersQuery, useDeleteUserMutation } from '../usersApiSlice';
 
@@ -13,8 +13,12 @@ const UsersList = () => {
        }
       
    }
+   const [searchParams] = useSearchParams()
+   const q = searchParams.get("q")
   if(isLoading) return <h1> Loading ...</h1>
   if(isError) return <h1>{ JSON.stringify( error)}</h1>
+  const filteredData = !q? [...usersObject.data] : usersObject.data.filter(user=> (user.fullname.indexOf(q) > -1) || (user.email.indexOf(q) > -1))
+
     return (
         <div className="users-list">
           <div className="users-list-top">
@@ -37,7 +41,7 @@ const UsersList = () => {
               </tr>
             </thead>
             <tbody>
-              {usersObject.data.map((user) => (
+              {filteredData.map((user) => (
                 <tr key={user.id}>
                   <td>
                     <div className="users-list-user">

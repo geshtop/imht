@@ -11,11 +11,12 @@ const CompaniesList = () => {
         }
        
     }
-    const [searchParams] = useSearchParams();
-    //console.log("q", searchParams.get('q'));
+    const [searchParams] = useSearchParams()
+    const q = searchParams.get("q")
+
    if(isLoading) return <h1> Loading ...</h1>
    if(isError) return <h1>{ JSON.stringify( error)}</h1>
-
+    const filteredData = !q? [...companiesObject.data] : companiesObject.data.filter(company=>company.name.indexOf(q) > -1)
   return (
     <div className="companies-list">
         <div className="companies-list-top">
@@ -35,7 +36,7 @@ const CompaniesList = () => {
                 </tr>
             </thead>
             <tbody>
-                {companiesObject.data?.map(company=>(
+                {filteredData?.map(company=>(
                     <tr key={company._id}>
                         <td>
                             <div className="companies-list-company">

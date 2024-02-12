@@ -28,4 +28,5 @@
     [X] add user info hook from token by adding the jwt-decode packages
     [X] add componenet that require roles
     [X] set the menu for the user role
-
+[X] Part 10
+    [X] add filter to users and companies lists
